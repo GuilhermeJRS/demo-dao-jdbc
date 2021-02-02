@@ -44,5 +44,9 @@ public class Program {
 		seller.setName("GSouza");
 		sellerDao.update(seller);
 		System.out.println("After  Update: " + sellerDao.findById(3));
+				
+		System.out.println("===== TEST 6: seller delete =====");
+		sellerDao.deleteById(newSeller.getId());
+		System.out.println("Deleted! ");
 	}
 }
