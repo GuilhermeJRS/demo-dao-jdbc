@@ -56,15 +56,6 @@ public class SellerDaoJDBC implements SellerDao {
 		}
 	}
 
-	private Seller instantiateSeller(ResultSet rs, Department dep) throws SQLException {
-		return new Seller(rs.getInt("Id"), rs.getString("Name"), rs.getString("Email"), rs.getDate("BirthDate"),
-				rs.getDouble("BaseSalary"), dep);
-	}
-
-	private Department instantiateDepartment(ResultSet rs) throws SQLException {
-		return new Department(rs.getInt("DepartmentId"), rs.getString("deptName"));
-	}
-
 	@Override
 	public List<Seller> findAll() {
 
@@ -230,5 +221,14 @@ public class SellerDaoJDBC implements SellerDao {
 		} finally {
 			DB.closeStatement(st);
 		}
+	}
+
+	private Seller instantiateSeller(ResultSet rs, Department dep) throws SQLException {
+		return new Seller(rs.getInt("Id"), rs.getString("Name"), rs.getString("Email"), rs.getDate("BirthDate"),
+				rs.getDouble("BaseSalary"), dep);
+	}
+
+	private Department instantiateDepartment(ResultSet rs) throws SQLException {
+		return new Department(rs.getInt("DepartmentId"), rs.getString("deptName"));
 	}
 }
